@@ -5,7 +5,7 @@
         <div v-else>
             <div v-for="item in items" :key="item" 
               :class="{active: selectedCourse == item}" @click="selectedCourse= item">
-              {{ item }}
+              {{ item.name }}
             </div>
             <!-- <div v-for="item in items" :key="item" 
             :style="{backgroundColor: selectedCourse == item ? '#ddd' : 'transparent'}" @click="selectedCourse= item">
@@ -37,6 +37,7 @@
 <style lang="less" scoped>
 .active{
    background-color: #ddd;
+   cursor: pointer;
    cursor: pointer;
 }
 </style>

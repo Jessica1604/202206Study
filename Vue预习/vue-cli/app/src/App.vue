@@ -1,31 +1,60 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <courseList />
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+      <!-- <courseList></courseList> -->
+      <span v-if="isLogin">
+        {{welcome}}
+        <button>注销</button>
+      </span>
+    </div>
+    <router-view/>
   </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import courseList from './components/courseList.vue'
-
+// import courseList from '@/components/courseList'
+import {mapState, mapGetters} from 'vuex'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld,
-    courseList
-  }
+  name: 'app',
+  // components: { courseList },
+  data() {
+    return {
+      key: ''
+    }
+  },
+  methods: {
+  },
+  computed: {
+    // name() {
+    //   return this.data 
+    // }
+    ...mapState('user', ['isLogin']),
+    ...mapGetters('user', ['welcome'])
+  },
 }
 </script>
 
-<style>
+
+<style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
