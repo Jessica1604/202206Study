@@ -31,7 +31,7 @@
                 
             },
             hide() {
-                this.isShow = false;
+                // this.isShow = false;
                 this.remove()
             }
         },

@@ -5,8 +5,10 @@
 </template>
 
 <script>
+    import emmiter from '../until/emmiter.js'
     export default {
         inheritAttrs: false,
+        mixins: [ emmiter ],
         props: {
             type: {
                 type: String,
@@ -23,7 +25,8 @@
         methods: {
             onInput(e) {
                 this.$emit('input', e.target.value)
-                this.$parent.$emit('valid')
+                // this.$parent.$emit('valid')
+                this.dispatch('kformitem', 'valid')
             }
         },
         
