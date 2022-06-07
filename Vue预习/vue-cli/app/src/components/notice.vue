@@ -27,6 +27,7 @@
                setTimeout(() => {
                    this.isShow = false
                }, 1000) 
+               this.hide()
                 
             },
             hide() {
