@@ -21,6 +21,7 @@
     import Kinput from '@/components/kinput'
     import Kformitem from '@/components/Kformitem'
     import Kform from '@/components/kform'
+    import notice from '@/components/notice'
 
     export default {
         name: 'detail',
@@ -46,6 +47,7 @@
                 this.$refs['loginForm'].validateAll(valid => {
                     if (valid) {
                         console.log('校验成功')
+                        this.$create(notice, {}).show()
                     } else {
                         console.log('校验失败')
                     }
