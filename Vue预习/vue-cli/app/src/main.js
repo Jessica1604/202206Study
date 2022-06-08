@@ -5,8 +5,9 @@ import store from './store'
 import create from './until/create'
 
 Vue.config.productionTip = false
+Vue.use(create)
 
-Vue.prototype.$create = create
+// Vue.prototype.$create = create
 
 new Vue({
   render: h => h(App),

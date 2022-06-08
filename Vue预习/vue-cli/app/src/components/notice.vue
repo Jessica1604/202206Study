@@ -26,8 +26,8 @@
                this.isShow = true
                setTimeout(() => {
                    this.isShow = false
-               }, 1000) 
-               this.hide()
+               }, 2000) 
+            //    this.hide()
                 
             },
             hide() {
