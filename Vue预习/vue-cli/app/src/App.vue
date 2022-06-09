@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link :to="'/'">Home</router-link> |
+      <router-link :to="'/about'">About</router-link>
       <!-- <courseList></courseList> -->
       <span v-if="isLogin">
         {{welcome}}
         <button>注销</button>
       </span>
     </div>
-    <router-view/>
+    <!-- <router-view/> -->
+    <router-view></router-view>
   </div>
 </template>
 <script>
