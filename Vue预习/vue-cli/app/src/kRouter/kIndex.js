@@ -6,16 +6,30 @@ class kvRouter {
         this.$options = option
 
         // Vue.util.defineReactive(this, 'current', '/')
-        Vue.set(this, 'current', '/')
+        // Vue.set(this, 'current', '/')
+        this.app = new Vue({
+            data() {
+                return {
+                    current: '/'
+                }
+            },
+        })
 
         window.onhashchange = function() {
-            this.current = window.location.hash.slice(1)
-            console.log(this.current)
+            this.app.current = window.location.hash.slice(1)
+            // console.log(this.current)
         }
 
         window.onload = function() {
-            this.current = window.location.hash.slice(1)
+            this.app.current = window.location.hash.slice(1)
         }
+
+        this.routerMap = {}
+        option.routes.forEach(route => {
+            this.routerMap[route.path] = route.component
+        });
+
+        console.log(this.routerMap)
 
     }
 
@@ -52,14 +66,16 @@ kvRouter.install = function(_vue) {
 
    Vue.component('router-view', {
        render(h) {
-           let component = null
-           console.log(this.$router)
-           this.$router.$options.routes.forEach(element => {
-               if (element.path == this.$router.current){
-                component = element['component']
-               }
-           });
-           console.log(component)
+
+        //    const {routerMap} = this.$router
+        // console.log(this.routerMap)
+        // console.log(this.current)
+        // console.log(this.routerMap[this.current])
+           const {routerMap, app} = this.$router
+           console.log(routerMap)
+           console.log(app.current)
+           let component = routerMap[app.current] || null
+          
            return h(component)
         //    return h('div', 'router-view')
        }
